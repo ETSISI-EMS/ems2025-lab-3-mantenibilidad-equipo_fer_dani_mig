@@ -1,39 +1,26 @@
 package com.practica.genericas;
 
-
 public class Coordenada {
-	private float latitud, longitud;
 
-	
-	public Coordenada() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
+	private final float latitud;
+	private final float longitud;
 
-	public Coordenada(float latitud, float longitud) {
+	public Coordenada (float latitud, float longitud) {
 		super();
 		this.latitud = latitud;
 		this.longitud = longitud;
 	}
 
-	public float getLatitud() {
+	public float getLatitud () {
 		return latitud;
 	}
 
-	public void setLatitud(float latitud) {
-		this.latitud = latitud;
-	}
-
-	public float getLongitud() {
+	public float getLongitud () {
 		return longitud;
 	}
 
-	public void setLongitud(float longitud) {
-		this.longitud = longitud;
-	}
-
 	@Override
-	public int hashCode() {
+	public int hashCode () {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + Float.floatToIntBits(latitud);
@@ -42,7 +29,7 @@ public class Coordenada {
 	}
 
 	@Override
-	public boolean equals(Object obj) {
+	public boolean equals (Object obj) {
 		if (this == obj)
 			return true;
 		if (obj == null)
@@ -52,9 +39,13 @@ public class Coordenada {
 		Coordenada other = (Coordenada) obj;
 		if (Float.floatToIntBits(latitud) != Float.floatToIntBits(other.latitud))
 			return false;
-		if (Float.floatToIntBits(longitud) != Float.floatToIntBits(other.longitud))
-			return false;
-		return true;
+		return Float.floatToIntBits(longitud) == Float.floatToIntBits(other.longitud);
 	}
-	
+
+	@Override
+	public String toString () {
+		return String.format("%.4f;%.4f\n", this.getLatitud(),
+							 this.getLongitud());
+	}
+
 }
