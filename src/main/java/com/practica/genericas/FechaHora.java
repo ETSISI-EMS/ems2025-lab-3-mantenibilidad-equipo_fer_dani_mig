@@ -4,6 +4,10 @@ import java.time.LocalDateTime;
 
 public class FechaHora implements Comparable <FechaHora> {
 
+	public static FechaHora parsearFecha (String fecha) {
+		Fecha readFecha = FechaHora.parsearFechaAux(fecha);
+		return new FechaHora(readFecha, 0, 0);
+	}
 	public static FechaHora parsearFecha (String fecha, String hora) {
 		int dia, mes, anio;
 		String[] valores = fecha.split("/");
@@ -15,6 +19,15 @@ public class FechaHora implements Comparable <FechaHora> {
 		minuto = Integer.parseInt(valores[0]);
 		segundo = Integer.parseInt(valores[1]);
 		return new FechaHora(dia, mes, anio, minuto, segundo);
+	}
+
+	private static Fecha parsearFechaAux (String fecha) {
+		int dia, mes, anio;
+		String[] valores = fecha.split("\\/");
+		dia = Integer.parseInt(valores[0]);
+		mes = Integer.parseInt(valores[1]);
+		anio = Integer.parseInt(valores[2]);
+		return new Fecha(anio, mes, dia);
 	}
 
 	public static class Fecha {
@@ -110,6 +123,11 @@ public class FechaHora implements Comparable <FechaHora> {
 
 	public FechaHora (int dia, int mes, int anio, int hora, int minuto) {
 		this.fecha = new Fecha(dia, mes, anio);
+		this.hora = new Hora(hora, minuto);
+	}
+
+	public FechaHora (Fecha fecha, int hora, int minuto) {
+		this.fecha = fecha;
 		this.hora = new Hora(hora, minuto);
 	}
 
