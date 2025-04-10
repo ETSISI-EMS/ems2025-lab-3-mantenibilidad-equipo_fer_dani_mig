@@ -1,5 +1,4 @@
 :point_right: [![Quality Gate Status](http://c1.etsisi.upm.es:8888/api/project_badges/measure?project=ETSISI-EMS_ems2025-lab-3-mantenibilidad-equipo_fer_dani_mig_9a5c907c-66a4-4209-bcda-6bebd69f6cb1&metric=alert_status&token=sqb_d0802495149b06e3b434a45ff1eff098058dea24)](http://c1.etsisi.upm.es:8888/dashboard?id=ETSISI-EMS_ems2025-lab-3-mantenibilidad-equipo_fer_dani_mig_9a5c907c-66a4-4209-bcda-6bebd69f6cb1)
-Hola
 
 # EMS-lab3 Maintainability
 
