@@ -1,14 +1,15 @@
 package com.practica.excecption;
 
+public class EmsDuplicateLocationException extends Exception {
 
-public class EmsDuplicateLocationException extends Exception{
-	public EmsDuplicateLocationException() {
+	public EmsDuplicateLocationException () {
 		super("LOCALIZACION DUPLICADA!");
 		// TODO Auto-generated constructor stub
 	}
 
-	public EmsDuplicateLocationException(String message) {
+	public EmsDuplicateLocationException (String message) {
 		super(message);
 		// TODO Auto-generated constructor stub
 	}
+
 }

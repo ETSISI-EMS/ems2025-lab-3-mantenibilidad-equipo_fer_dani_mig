@@ -1,11 +1,5 @@
 package com.practica.ems.covid;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-
 import com.practica.excecption.EmsDuplicateLocationException;
 import com.practica.excecption.EmsDuplicatePersonException;
 import com.practica.excecption.EmsInvalidNumberOfDataException;
@@ -18,6 +12,10 @@ import com.practica.genericas.FechaHora;
 import com.practica.genericas.Persona;
 import com.practica.genericas.PosicionPersona;
 import com.practica.lista.ListaContactos;
+
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.util.List;
 
 public class ContactosCovid {
 
@@ -55,7 +53,7 @@ public class ContactosCovid {
 		if (reset) {
 			resetData();
 		}
-		String datas[] = dividirEntrada(data);
+		String[] datas = dividirEntrada(data);
 		examineData(datas);
 	}
 

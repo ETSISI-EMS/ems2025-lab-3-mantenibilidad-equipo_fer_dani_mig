@@ -1,41 +1,40 @@
 package com.practica.ems.covid;
 
-
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.stream.Collectors;
-
 import com.practica.excecption.EmsDuplicateLocationException;
 import com.practica.excecption.EmsLocalizationNotFoundException;
 import com.practica.excecption.EmsPersonNotFoundException;
 import com.practica.genericas.FechaHora;
 import com.practica.genericas.PosicionPersona;
 
-public class Localizacion {
-	LinkedList<PosicionPersona> lista;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.stream.Collectors;
 
-	public Localizacion() {
+public class Localizacion {
+
+	final LinkedList <PosicionPersona> lista;
+
+	public Localizacion () {
 		super();
 		this.lista = new LinkedList <>();
 	}
-	
-	public LinkedList<PosicionPersona> getLista() {
+
+	public LinkedList <PosicionPersona> getLista () {
 		return lista;
 	}
 
 	public void addLocalizacion (PosicionPersona p) throws EmsDuplicateLocationException {
 		try {
-			findLocalizacion(p.getDocumento(), p.getFechaPosicion().getFecha().toString(),p.getFechaPosicion().getHora().toString() );
+			findLocalizacion(p.getDocumento(), p.getFechaPosicion().getFecha().toString(),
+							 p.getFechaPosicion().getHora().toString());
 			throw new EmsDuplicateLocationException();
-		}catch(EmsLocalizationNotFoundException e) {
+		} catch (EmsLocalizationNotFoundException e) {
 			lista.add(p);
 		}
 	}
-	
+
 	public int findLocalizacion (String documento, String fecha, String hora) throws EmsLocalizationNotFoundException {
-	    int cont = 0;
+		int cont = 0;
 		for (PosicionPersona posicionPersona : lista) {
 			cont++;
 			FechaHora fechaHora = FechaHora.parsearFecha(fecha, hora);
@@ -44,18 +43,18 @@ public class Localizacion {
 				return cont;
 			}
 		}
-	    throw new EmsLocalizationNotFoundException();
+		throw new EmsLocalizationNotFoundException();
 	}
 
 	@Override
-	public String toString() {
+	public String toString () {
 		return lista.stream().map(PosicionPersona::toString).collect(Collectors.joining());
 	}
 
 	public List <PosicionPersona> localizacionPersona (String documento) throws EmsPersonNotFoundException {
 		List <PosicionPersona> lista = this.lista.stream()
-									 .filter(p -> p.getDocumento().equals(documento))
-									 .collect(Collectors.toList());
+												 .filter(p -> p.getDocumento().equals(documento))
+												 .collect(Collectors.toList());
 		if (lista.isEmpty())
 			throw new EmsPersonNotFoundException();
 		else

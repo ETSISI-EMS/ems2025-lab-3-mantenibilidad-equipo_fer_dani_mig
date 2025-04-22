@@ -8,6 +8,7 @@ public class FechaHora implements Comparable <FechaHora> {
 		Fecha readFecha = FechaHora.parsearFechaAux(fecha);
 		return new FechaHora(readFecha, 0, 0);
 	}
+
 	public static FechaHora parsearFecha (String fecha, String hora) {
 		int dia, mes, anio;
 		String[] valores = fecha.split("/");
@@ -118,8 +119,8 @@ public class FechaHora implements Comparable <FechaHora> {
 
 	}
 
-	Fecha fecha;
-	Hora hora;
+	final Fecha fecha;
+	final Hora hora;
 
 	public FechaHora (int dia, int mes, int anio, int hora, int minuto) {
 		this.fecha = new Fecha(dia, mes, anio);
